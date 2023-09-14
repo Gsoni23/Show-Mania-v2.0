@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>Your Monthly Entertainment Report</title>
+        <style>
+            .bookings-page {
+                padding: 20px;
+                font-family: Arial, sans-serif;
+            }
+            
+            .bookings-heading {
+                font-size: 24px;
+                margin-bottom: 20px;
+                color: #333;
+            }
+            
+            .bookings-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+            
+            .booking-card {
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .booking-show-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+            
+            .booking-venue {
+                font-size: 14px;
+                color: #666;
+            }
+            
+            .booking-timings {
+                font-size: 14px;
+                color: #666;
+            }
+            
+            .booking-rating {
+                font-size: 14px;
+                color: #666;
+            }
+            
+            .booking-tickets {
+                font-size: 14px;
+                color: #666;
+            }
+            
+            .no-bookings {
+                text-align: center;
+                color: #666;
+            }
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        </head>
+        <body>
+
+        <div class="bookings-page">
+        <h1 class="bookings-heading">Monthly Entertainment Report</h1>
+        {% if bookings %}
+        <div class="bookings-list">
+            {% for booking in bookings %}
+            <div class="booking-card">
+            <h3 class="booking-show-name">{{ booking.show_name }}</h3>
+            <p class="booking-venue">Venue: {{ booking.venue_name }} - {{ booking.venue_location }}</p>
+            <p class="booking-timings">Show Timings: {{ booking.start_time }} - {{ booking.end_time }}</p>
+            <p class="booking-rating">Rating: {{ booking.rating }}/5</p>
+            <p class="booking-tickets">Number of Tickets: {{ booking.tickets }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-bookings">
+            <p>No bookings found.</p>
+        </div>
+        {% endif %}
+        </div>
+
+        </body>
+        </html>

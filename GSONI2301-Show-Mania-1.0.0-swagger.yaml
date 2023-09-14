@@ -1,0 +1,388 @@
+info:
+  _postman_id: 0c09ea17-ec51-459d-b193-cca28c775773
+  name: Show-Mania
+  description: >-
+    This is a single page web application which is provides a platform to the
+    Theatre owners to display there shows and the normal users to book the
+    shows.
+  schema: https://schema.getpostman.com/json/collection/v2.0.0/collection.json
+  _exporter_id: '25513541'
+item:
+  - name: Signup
+    request:
+      method: POST
+      header: []
+      body:
+        mode: raw
+        raw: >-
+          {"name" : "Vikram", "email" : "vikramsoni2343942@gmail.com",
+          "password" : "vikram123"}
+        options:
+          raw:
+            language: json
+      url: http://127.0.0.1:5000/signup
+      description: >-
+        It is used to signup a normal user. It requires a name, email id and
+        password of the user for signup process. And it returns a JWT token and
+        basic information of the user in the response.
+    response: []
+  - name: Login
+    request:
+      method: POST
+      header: []
+      body:
+        mode: raw
+        raw: '{"email" : "vikramsoni2343942@gmail.com", "password" : "vikram123"}'
+        options:
+          raw:
+            language: json
+      url: http://127.0.0.1:5000/login
+      description: >-
+        This end point is used to login both admin and user. It requires email
+        and password. It returns user id and the jwt token in response.
+    response: []
+  - name: Logout
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkwNzMzOSwianRpIjoiODI2MGIxNDktMTk1ZS00NDMzLTk0NTAtOTVkNjBhMjY3MTI0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNjkxOTA3MzM5LCJleHAiOjE2OTE5MDgyMzl9.s3CvLM1kM-a23Jg8iTCiaRyaOgfVPbUbf0hFiopgUKw
+      method: POST
+      header: []
+      url: http://127.0.0.1:5000/logout
+      description: >-
+        It is used to logout user or admin. It takes jwt token in the
+        authorization header and return a message on successful logout.
+    response: []
+  - name: Home-admin
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMDM2MywianRpIjoiMzYxYTUzN2UtMDI0MS00OWE3LWExMjEtZThjMjM5NzA1MzZkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTEwMzYzLCJleHAiOjE2OTE5MTEyNjN9.XDOl3jEClvacfqe8M2LJz6MLniqNX-bgI_L4FtXPz6M
+      method: GET
+      header: []
+      url: http://127.0.0.1:5000/home
+      description: >-
+        It is used to get data for admin dashboard. It needs jwt token and
+        responds a nested dictionery which has information about the venues and
+        shows created by the admin.
+    response: []
+  - name: Venue-info
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMDM2MywianRpIjoiMzYxYTUzN2UtMDI0MS00OWE3LWExMjEtZThjMjM5NzA1MzZkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTEwMzYzLCJleHAiOjE2OTE5MTEyNjN9.XDOl3jEClvacfqe8M2LJz6MLniqNX-bgI_L4FtXPz6M
+      method: GET
+      header: []
+      url:
+        raw: http://127.0.0.1:5000/venue?venue_id=1
+        protocol: http
+        host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+        port: '5000'
+        path:
+          - venue
+        query:
+          - key: venue_id
+            value: '1'
+      description: >-
+        Used to get information about the venues and takes query parameters as
+        venue_id. Only for admins
+    response: []
+  - name: Venue-create
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMDM2MywianRpIjoiMzYxYTUzN2UtMDI0MS00OWE3LWExMjEtZThjMjM5NzA1MzZkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTEwMzYzLCJleHAiOjE2OTE5MTEyNjN9.XDOl3jEClvacfqe8M2LJz6MLniqNX-bgI_L4FtXPz6M
+      method: POST
+      header: []
+      body:
+        mode: raw
+        raw: '{"venue_name" : "Phoenix Mall", "place" : "Chennai", "capacity" : 600}'
+        options:
+          raw:
+            language: json
+      url: http://127.0.0.1:5000/venue
+      description: >-
+        It is used to create venues by the admin. It requires authorization
+        token, and in body it requires venue name, place and capacity.
+    response: []
+  - name: Venue-update
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMTI3OSwianRpIjoiYjQ5NDc1ZDQtMWU0ZC00ZTViLTk2YjktMTUyYWY3NTA5Y2Y1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTExMjc5LCJleHAiOjE2OTE5MTIxNzl9.EQw539P36ojoZQMO3ADnTvyg-olBJRtAXhxqj6GfMyQ
+      method: PATCH
+      header: []
+      body:
+        mode: raw
+        raw: "{\r\n    \"venue_id\": 2,\r\n    \"venue_name\": \"Phoenix Mall\",\r\n    \"place\": \"Chennai\",\r\n    \"capacity\": 700\r\n}"
+        options:
+          raw:
+            language: json
+      url: http://127.0.0.1:5000/venue
+      description: >-
+        It is used to edit the venue information. we have to give venue_id as
+        well with other parameters which will tell the system that on which
+        venue we want to change something.
+    response: []
+  - name: Venue-delete
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMTI3OSwianRpIjoiYjQ5NDc1ZDQtMWU0ZC00ZTViLTk2YjktMTUyYWY3NTA5Y2Y1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTExMjc5LCJleHAiOjE2OTE5MTIxNzl9.EQw539P36ojoZQMO3ADnTvyg-olBJRtAXhxqj6GfMyQ
+      method: DELETE
+      header: []
+      body:
+        mode: raw
+        raw: ''
+      url:
+        raw: http://127.0.0.1:5000/venue?venue_id=2
+        protocol: http
+        host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+        port: '5000'
+        path:
+          - venue
+        query:
+          - key: venue_id
+            value: '2'
+      description: >-
+        It is used to delete venue by the admin. It requires venue_id as the
+        query parameters.
+    response: []
+  - name: Show-info
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMTI3OSwianRpIjoiYjQ5NDc1ZDQtMWU0ZC00ZTViLTk2YjktMTUyYWY3NTA5Y2Y1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTExMjc5LCJleHAiOjE2OTE5MTIxNzl9.EQw539P36ojoZQMO3ADnTvyg-olBJRtAXhxqj6GfMyQ
+      method: GET
+      header: []
+      url:
+        raw: http://127.0.0.1:5000/show?show_id=1
+        protocol: http
+        host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+        port: '5000'
+        path:
+          - show
+        query:
+          - key: show_id
+            value: '1'
+      description: >-
+        It is used to take show info and it requires show_id as query
+        parameters.
+    response: []
+  - name: Show-create
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMTI3OSwianRpIjoiYjQ5NDc1ZDQtMWU0ZC00ZTViLTk2YjktMTUyYWY3NTA5Y2Y1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTExMjc5LCJleHAiOjE2OTE5MTIxNzl9.EQw539P36ojoZQMO3ADnTvyg-olBJRtAXhxqj6GfMyQ
+      method: POST
+      header: []
+      body:
+        mode: raw
+        raw: "{\r\n    \"show_name\": \"Bahubali 2\",\r\n    \"rating\": 5,\r\n    \"venue_id\" : 2,\r\n    \"start_time\": \"09:00\",\r\n    \"end_time\": \"12:00\",\r\n    \"tags\": \"Adventure, War, Action, History\",\r\n    \"price\": 350\r\n}"
+        options:
+          raw:
+            language: json
+      url: http://127.0.0.1:5000/show
+      description: >-
+        It is used to create shows and it requires some details of show, also
+        requires venue_id in which we want to add the show.
+    response: []
+  - name: Show-update
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMjUzNCwianRpIjoiNjMxYjVlNzItZDRjMi00ZDM5LWI0ZmQtMGQyYTE0MTI4YzI1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTEyNTM0LCJleHAiOjE2OTE5MTM0MzR9.8sP087K48K3kRwwmwB5t0UGKg44b4MG97Nt6nncqpQs
+      method: PATCH
+      header: []
+      body:
+        mode: raw
+        raw: "{\r\n    \"show_name\": \"Bahubali 2\",\r\n    \"rating\": 5,\r\n    \"start_time\": \"09:00\",\r\n    \"end_time\": \"12:00\",\r\n    \"tags\": \"Drama, War, Action, History\",\r\n    \"price\": 350\r\n}"
+        options:
+          raw:
+            language: json
+      url:
+        raw: http://127.0.0.1:5000/show?show_id=4
+        protocol: http
+        host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+        port: '5000'
+        path:
+          - show
+        query:
+          - key: show_id
+            value: '4'
+      description: >-
+        It is used to update the shows and it requires show_id in query
+        parameters and rest of the show info in the body.
+    response: []
+  - name: Show-delete
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMjUzNCwianRpIjoiNjMxYjVlNzItZDRjMi00ZDM5LWI0ZmQtMGQyYTE0MTI4YzI1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTEyNTM0LCJleHAiOjE2OTE5MTM0MzR9.8sP087K48K3kRwwmwB5t0UGKg44b4MG97Nt6nncqpQs
+      method: DELETE
+      header: []
+      url:
+        raw: http://127.0.0.1:5000/show?show_id=4
+        protocol: http
+        host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+        port: '5000'
+        path:
+          - show
+        query:
+          - key: show_id
+            value: '4'
+      description: >-
+        It is used to delete the shows and it requires show_id in query
+        parameters.
+    response: []
+  - name: Home-user
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMjg3OSwianRpIjoiYTMzMGRiMjMtODM5Ni00M2JiLTkxNWUtYzY5MTQzNmVmZDQ5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNjkxOTEyODc5LCJleHAiOjE2OTE5MTM3Nzl9.ybXNi18Y-zOd5OhPgCUwu0A9j0g0A2CRMT4kcxX8Cx4
+      method: GET
+      header: []
+      url: http://127.0.0.1:5000/home
+      description: >-
+        It is used to go to user dashboard. It requires user jwt token and it
+        displayes all the shows available for the user to book.
+    response: []
+  - name: Bookings-made
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMjg3OSwianRpIjoiYTMzMGRiMjMtODM5Ni00M2JiLTkxNWUtYzY5MTQzNmVmZDQ5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNjkxOTEyODc5LCJleHAiOjE2OTE5MTM3Nzl9.ybXNi18Y-zOd5OhPgCUwu0A9j0g0A2CRMT4kcxX8Cx4
+      method: GET
+      header: []
+      url: http://127.0.0.1:5000/bookings
+      description: >-
+        It is used to tell about the bookings made by the user and it requires
+        only user token.
+    response: []
+  - name: Bookings-new
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMjg3OSwianRpIjoiYTMzMGRiMjMtODM5Ni00M2JiLTkxNWUtYzY5MTQzNmVmZDQ5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNjkxOTEyODc5LCJleHAiOjE2OTE5MTM3Nzl9.ybXNi18Y-zOd5OhPgCUwu0A9j0g0A2CRMT4kcxX8Cx4
+      method: POST
+      header: []
+      body:
+        mode: raw
+        raw: '{"venue_id" : 2, "show_id":4, "tickets": 5}'
+        options:
+          raw:
+            language: json
+      url: http://127.0.0.1:5000/bookings
+      description: >-
+        It is used to book new shows, it requires venue_id, show_id and number
+        of tickets in the body.
+    response: []
+  - name: Search-Box
+    protocolProfileBehavior:
+      disableBodyPruning: true
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxMzg3NiwianRpIjoiZDM2ZWJmYTYtOTE5NS00YTFlLWFkYjgtYzdmMGIxMzNlOTViIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNjkxOTEzODc2LCJleHAiOjE2OTE5MTQ3NzZ9.p_4HMrfuWj5eDYEyvFB2smZ0BH5EMOiTTzssz2qDN9k
+      method: GET
+      header: []
+      body:
+        mode: raw
+        raw: ''
+        options:
+          raw:
+            language: json
+      url:
+        raw: http://127.0.0.1:5000/search?searchQuery=advent
+        protocol: http
+        host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+        port: '5000'
+        path:
+          - search
+        query:
+          - key: searchQuery
+            value: advent
+      description: >-
+        It is used to search shows based on ratings, show names and their genre.
+        It requires jwt token. It is applied in the user dashboard.
+    response: []
+  - name: Export-venue_data
+    request:
+      auth:
+        type: bearer
+        bearer:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTkxNDI1OSwianRpIjoiNGZjMjVkMzMtYjg2ZS00ZjFhLWI5NjMtZWEyZjE2NDM1MjAyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjkxOTE0MjU5LCJleHAiOjE2OTE5MTUxNTl9.5lvjQkY9ejOP7u4ZWnMP1_NAju3HBj1jmKN3yrnC9Uc
+      method: GET
+      header: []
+      url:
+        raw: http://127.0.0.1:5000/export?venue_id=2
+        protocol: http
+        host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+        port: '5000'
+        path:
+          - export
+        query:
+          - key: venue_id
+            value: '2'
+      description: >-
+        It is used to trigger a async job that is export data. It is only for
+        admin. It requires venue_id as query parameter to tell which venue data
+        we want to export.
+    response: []
