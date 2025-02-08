@@ -1,5 +1,8 @@
 # Frontend
 
+# Very Important tip
+npx create-vue Frontend : always use this to install vue
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup

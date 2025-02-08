@@ -27,7 +27,7 @@ def create_app():
     app.config['MAIL_SERVER']='smtp.gmail.com'
     app.config['MAIL_PORT'] = 465
     app.config['MAIL_USERNAME'] = 'gsoni.2301@gmail.com' # Change it from your mail id
-    app.config['MAIL_PASSWORD'] = 'yyselkqvvliees' # Change the password accordingly.
+    app.config['MAIL_PASSWORD'] = 'drvrbgttdjghyalv' # Change the password accordingly.
     app.config['MAIL_USE_TLS'] = False
     app.config['MAIL_USE_SSL'] = True
 
@@ -49,11 +49,11 @@ def create_app():
     jwt = JWTManager(app)
 
     @jwt.user_identity_loader
-    def user_identity_lookup(user):
+    def abc(user):
         return user
 
     @jwt.user_lookup_loader
-    def user_lookup_callback(_jwt_header, jwt_data):
+    def abcd(_jwt_header, jwt_data):
         identity = jwt_data["sub"]
         return User.query.filter_by(user_id=identity).one_or_none()
 

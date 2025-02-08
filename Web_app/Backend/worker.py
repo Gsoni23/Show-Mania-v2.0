@@ -20,14 +20,14 @@ def create_celery_app(app):
     celery_app.conf.beat_schedule = {
         'send-monthly-entertainment-report': {
             'task': 'Scheduled Job',
-            'schedule': crontab(day_of_month=1, hour=18, minute=0),
-            # 'schedule': 120,
+            # 'schedule': crontab(day_of_month=1, hour=18, minute=0),
+            'schedule': 120,
         },
 
         'daily-reminder': {
             'task': 'Daily Reminder',
-            'schedule': crontab(hour=18, minute=0),
-            # 'schedule': 120,
+            # 'schedule': crontab(hour=18, minute=0),
+            'schedule': 120,
         },
     }
 

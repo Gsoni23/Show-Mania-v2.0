@@ -1,2 +1,2 @@
 venue_id,venue_name,place,capacity,no. of shows,shows
-4,Inox,Mumbai,600,1,[<id = 6 show_name = Bhuj rating = 4 booked_tickets = 0 >]
+1,Triton Mall,Jaipur,500,3,"[<id = 1 show_name = Lord of the Rings rating = 3 booked_tickets = 1 >, <id = 2 show_name = RRR rating = 5 booked_tickets = 3 >, <id = 3 show_name = Sita Ramam rating = 4 booked_tickets = 8 >]"
